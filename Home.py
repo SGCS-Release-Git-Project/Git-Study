@@ -152,7 +152,8 @@ class Basic:
                 _, _, inputs, outputs = get_data(st.session_state["problem_numbers"])
 
                 results = solve(inputs)
-                st.write(f"## 문제: {st.session_state["problem_numbers"]}")
+                number = st.session_state["problem_numbers"]
+                st.write("## 문제: " + str(number))
                 st.chat_message("ai").write(outputs)
                 st.chat_message("human").write(results)
             else:
