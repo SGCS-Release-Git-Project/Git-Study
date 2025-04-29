@@ -1,2 +1,8 @@
-A,B = map(int, input().split())
-print(A+B)
+def solve(inputs):
+    answers = []
+
+    for input in inputs:
+
+        answers.append(sum(list(map(int,input.split()))))
+
+    return answers
