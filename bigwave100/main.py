@@ -4,6 +4,7 @@ def solve(inputs):
     for input in inputs:
         ans = 0
         for i in range(1, int(input)+1):
-            ans += i
+            ans = ans + i
         answers.append(str(ans))
+    
     return answers
