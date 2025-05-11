@@ -1,6 +1,9 @@
 def solve(inputs):
+    T = int(inputs[0])
     answers = []
-    for input_line in inputs:
-        a, b = map(int, input_line.split())
+
+    for i in range(1, T + 1):
+        a, b = map(int, inputs[i].split())
         answers.append(a + b)
+
     return answers
