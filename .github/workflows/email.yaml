@@ -1,0 +1,29 @@
+name: PR 오픈 시, 이메일 전송
+
+on:
+  pull_request:
+    types: [opened]
+
+jobs:
+  notify_email:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send email
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.naver.com
+          server_port:    465
+          username:       ${{ secrets.naver_email }}
+          password:       ${{ secrets.naver_password }}
+          secure:         true
+          from:           ${{ secrets.naver_email }}
+          to:             ${{ secrets.gmail_email }}
+          subject:        "[GitHub] PR #${{ github.event.pull_request.number }} 오픈 알림"
+          body: |
+            새로운 Pull Request가 오픈되었습니다.
+
+            • 작성자: ${{ github.event.pull_request.user.login }}
+            • 제목  : ${{ github.event.pull_request.title }}
+            • 링크  : ${{ github.event.pull_request.html_url }}
+
+            확인 부탁드립니다.
